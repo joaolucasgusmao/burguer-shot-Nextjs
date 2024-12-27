@@ -8,7 +8,7 @@ interface ProductsSectionProps {
 const ProductsSection = ({ products }: ProductsSectionProps) => {
   return (
     <section>
-      <ProductCard products={products} />
+      {/* <ProductCard products={products} /> */}
     </section>
   );
 };
