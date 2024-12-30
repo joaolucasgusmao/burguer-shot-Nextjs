@@ -1,6 +1,6 @@
 import fetchProducts from "@/api/fetchProducts";
 import Header from "@/components/Header";
-import ProductsSection from "@/components/ProductsSection";
+import ProductsList from "@/components/ProductsList";
 import { IProducts } from "@/interfaces/product";
 import { GetStaticProps } from "next";
 
@@ -12,7 +12,7 @@ const Home = ({ productsData }: HomeProps) => {
   return (
     <>
       <Header />
-      <ProductsSection products={productsData} />
+      <ProductsList products={productsData} />
     </>
   );
 };
