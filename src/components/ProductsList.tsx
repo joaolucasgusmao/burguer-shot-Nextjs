@@ -3,9 +3,10 @@ import Image from "next/image";
 
 interface ProductsListProps {
   products: IProducts[];
+  addToCart: (product: IProducts) => void;
 }
 
-const ProductsList = ({ products }: ProductsListProps) => {
+const ProductsList = ({ products, addToCart }: ProductsListProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -41,7 +42,10 @@ const ProductsList = ({ products }: ProductsListProps) => {
                 <p className="text-base font-bold text-green">
                   {formatPrice(product.price)}
                 </p>
-                <button className="text-gray text-base bg-gray-400 w-fit px-5 py-1 rounded-md hover:bg-green transition-colors duration-500">
+                <button
+                  onClick={() => addToCart(product)}
+                  className="text-gray text-base bg-gray-400 w-fit px-5 py-1 rounded-md hover:bg-green transition-colors duration-500"
+                >
                   Adicionar
                 </button>
               </div>
