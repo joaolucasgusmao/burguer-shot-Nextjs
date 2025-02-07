@@ -1,3 +1,5 @@
+"use client";
+
 import fetchProducts from "@/api/fetchProducts";
 import CartModal from "@/components/CartModal";
 import Header from "@/components/Header";
@@ -15,7 +17,12 @@ const Home = ({ productsData }: HomeProps) => {
   const [cartList, setCartList] = useState<IProducts[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-  console.log(modalIsOpen);
+  useEffect(() => {
+    const storedCartList = localStorage.getItem("@Products");
+    if (storedCartList) {
+      setCartList(JSON.parse(storedCartList));
+    }
+  }, []);
 
   const addToCart = (productToAdd: IProducts) => {
     const isProductInCart = cartList.some(
@@ -54,6 +61,10 @@ const Home = ({ productsData }: HomeProps) => {
     document.addEventListener("click", handleClickOutsideModal);
     document.addEventListener("keydown", handleKeyPress);
   }, [modalIsOpen]);
+
+  useEffect(() => {
+    localStorage.setItem("@Products", JSON.stringify(cartList));
+  }, [cartList]);
 
   return (
     <>
