@@ -15,6 +15,8 @@ const Home = ({ productsData }: HomeProps) => {
   const [cartList, setCartList] = useState<IProducts[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
+  console.log(modalIsOpen);
+
   const addToCart = (productToAdd: IProducts) => {
     const isProductInCart = cartList.some(
       (product) => product.id === productToAdd.id
@@ -62,6 +64,7 @@ const Home = ({ productsData }: HomeProps) => {
           closeModal={closeModal}
           cartList={cartList}
           setCartList={setCartList}
+          modalIsOpen={modalIsOpen}
         />
       ) : null}
       <ToastContainer autoClose={1000} />
