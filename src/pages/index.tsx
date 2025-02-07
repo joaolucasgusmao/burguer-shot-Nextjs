@@ -9,6 +9,7 @@ import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { MoonLoader } from "react-spinners";
+import Head from "next/head";
 
 interface HomeProps {
   productsData: IProducts[];
@@ -82,6 +83,10 @@ const Home = ({ productsData }: HomeProps) => {
 
   return (
     <>
+      <Head>
+        <title>Burguer Shot</title>
+      </Head>
+
       <Header cartList={cartList} openModal={openModal} />
       <ProductsList products={productsData} addToCart={addToCart} />
       {modalIsOpen ? (
