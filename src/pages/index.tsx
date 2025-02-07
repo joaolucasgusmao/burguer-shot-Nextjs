@@ -41,7 +41,11 @@ const Home = ({ productsData }: HomeProps) => {
       <Header cartList={cartList} openModal={openModal} />
       <ProductsList products={productsData} addToCart={addToCart} />
       {modalIsOpen ? (
-        <CartModal closeModal={closeModal} cartList={cartList} />
+        <CartModal
+          closeModal={closeModal}
+          cartList={cartList}
+          setCartList={setCartList}
+        />
       ) : null}
       <ToastContainer autoClose={1000} />
     </>

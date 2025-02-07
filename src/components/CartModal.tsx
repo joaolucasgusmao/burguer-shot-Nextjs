@@ -4,10 +4,11 @@ import { FaTrash } from "react-icons/fa";
 
 interface CartModalProps {
   cartList: IProducts[];
+  setCartList: (cartList: IProducts[]) => void;
   closeModal: () => void;
 }
 
-const CartModal = ({ cartList, closeModal }: CartModalProps) => {
+const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -17,6 +18,11 @@ const CartModal = ({ cartList, closeModal }: CartModalProps) => {
   const totalValue = cartList.reduce((acc, product) => {
     return acc + product.price;
   }, 0);
+
+  const removeProduct = (id: number) => {
+    const newCartList = cartList.filter((product) => product.id !== id);
+    setCartList(newCartList);
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
@@ -51,7 +57,10 @@ const CartModal = ({ cartList, closeModal }: CartModalProps) => {
                       {formatPrice(product.price)}
                     </p>
                   </div>
-                  <FaTrash className="cursor-pointer text-gray-400" />
+                  <FaTrash
+                    onClick={() => removeProduct(product.id)}
+                    className="cursor-pointer text-gray-400"
+                  />
                 </div>
               </li>
             );
