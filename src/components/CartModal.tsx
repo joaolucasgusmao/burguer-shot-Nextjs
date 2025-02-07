@@ -24,6 +24,10 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
     setCartList(newCartList);
   };
 
+  const removeAllProducts = () => {
+    setCartList([]);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
       <div className="w-[30.25rem] h-[25.5rem] flex flex-col gap-4 bg-gray rounded-md">
@@ -74,7 +78,10 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
           </p>
         </div>
         <div className="flex justify-center items-center mb-4">
-          <button className="h-16 w-11/12 bg-gray-400 rounded-md text-gray text-sm font-semibold">
+          <button
+            onClick={() => removeAllProducts()}
+            className="h-16 w-11/12 bg-gray-400 rounded-md text-gray text-sm font-semibold"
+          >
             Remover todos
           </button>
         </div>
