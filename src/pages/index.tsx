@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import ProductsList from "@/components/ProductsList";
 import { IProducts } from "@/interfaces/product";
 import { GetStaticProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 interface HomeProps {
@@ -35,6 +35,23 @@ const Home = ({ productsData }: HomeProps) => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  const handleClickOutsideModal = (event: MouseEvent) => {
+    if (modalIsOpen && (event.target as HTMLDivElement).id === "modalOverlay") {
+      closeModal();
+    }
+  };
+
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (modalIsOpen && event.key === "Escape") {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutsideModal);
+    document.addEventListener("keydown", handleKeyPress);
+  }, [modalIsOpen]);
 
   return (
     <>

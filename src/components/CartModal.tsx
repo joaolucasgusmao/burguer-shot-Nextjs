@@ -15,6 +15,7 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
       currency: "BRL",
     }).format(price);
   };
+
   const totalValue = cartList.reduce((acc, product) => {
     return acc + product.price;
   }, 0);
@@ -29,7 +30,10 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+    <div
+      id="modalOverlay"
+      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"
+    >
       <div className="w-[30.25rem] h-[25.5rem] flex flex-col gap-4 bg-gray rounded-md">
         <div className="h-[3.5625rem] flex justify-between items-center p-4 bg-primary rounded-t-md">
           <h1 className="text-lg font-bold text-gray">Carrinho de compras</h1>
@@ -40,7 +44,7 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
             X
           </button>
         </div>
-        <ul className="mx-4 flex flex-col gap-4 my-2 overflow-auto">
+        <ul className="h-40 mx-4 flex flex-col gap-4 my-2 overflow-auto">
           {cartList.length > 0 ? (
             cartList.map((product) => {
               return (
@@ -72,7 +76,9 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
             })
           ) : (
             <div className="flex justify-center items-center h-44">
-              <p className="text-lg font-semibold text-gray-600">O seu carrinho está vazio!</p>
+              <p className="text-lg font-semibold text-gray-600">
+                O seu carrinho está vazio!
+              </p>
             </div>
           )}
         </ul>
