@@ -65,6 +65,7 @@ const Home = ({ productsData }: HomeProps) => {
           cartList={cartList}
           setCartList={setCartList}
           modalIsOpen={modalIsOpen}
+          toast={toast}
         />
       ) : null}
       <ToastContainer autoClose={1000} />

@@ -8,6 +8,7 @@ interface CartModalProps {
   setCartList: (cartList: IProducts[]) => void;
   closeModal: () => void;
   modalIsOpen: boolean;
+  toast: any;
 }
 
 const CartModal = ({
@@ -15,6 +16,7 @@ const CartModal = ({
   closeModal,
   setCartList,
   modalIsOpen,
+  toast,
 }: CartModalProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -30,10 +32,16 @@ const CartModal = ({
   const removeProduct = (id: number) => {
     const newCartList = cartList.filter((product) => product.id !== id);
     setCartList(newCartList);
+    toast.success("Produto removido do carrinho!");
   };
 
   const removeAllProducts = () => {
-    setCartList([]);
+    if (cartList.length > 0) {
+      setCartList([]);
+      toast.success("Produtos removidos do carrinho!");
+    } else {
+      toast.error("O seu carrinho já está vazio!");
+    }
   };
 
   return (
