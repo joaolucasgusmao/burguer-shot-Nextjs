@@ -13,4 +13,5 @@ O Burguer Shot é um aplicativo que simula um e-commerce de fast food, permitind
 ## Tecnologias utilizadas no desenvolvimento: 
 - React
 - Next.js
+- TypeScript
 - Tailwind CSS
