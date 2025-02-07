@@ -8,6 +8,7 @@ import { IProducts } from "@/interfaces/product";
 import { GetStaticProps } from "next";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { MoonLoader } from "react-spinners";
 
 interface HomeProps {
   productsData: IProducts[];
@@ -16,6 +17,11 @@ interface HomeProps {
 const Home = ({ productsData }: HomeProps) => {
   const [cartList, setCartList] = useState<IProducts[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     const storedCartList = localStorage.getItem("@Products");
@@ -65,6 +71,14 @@ const Home = ({ productsData }: HomeProps) => {
   useEffect(() => {
     localStorage.setItem("@Products", JSON.stringify(cartList));
   }, [cartList]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <MoonLoader color="#27AE60" loading={isLoading} size={50} />
+      </div>
+    );
+  }
 
   return (
     <>
