@@ -64,7 +64,7 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
                     </div>
                     <FaTrash
                       onClick={() => removeProduct(product.id)}
-                      className="cursor-pointer text-gray-400"
+                      className="cursor-pointer text-gray-400 hover:text-red-500 transition-colors duration-500"
                     />
                   </div>
                 </li>
@@ -86,7 +86,7 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
         <div className="flex justify-center items-center mb-4">
           <button
             onClick={() => removeAllProducts()}
-            className="h-16 w-11/12 bg-gray-400 rounded-md text-gray text-sm font-semibold"
+            className="h-16 w-11/12 bg-gray-400 rounded-md text-gray text-sm font-semibold hover:bg-green transition-colors duration-500"
           >
             Remover todos
           </button>
