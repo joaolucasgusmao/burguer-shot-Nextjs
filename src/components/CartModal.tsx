@@ -41,34 +41,40 @@ const CartModal = ({ cartList, closeModal, setCartList }: CartModalProps) => {
           </button>
         </div>
         <ul className="mx-4 flex flex-col gap-4 my-2 overflow-auto">
-          {cartList.map((product) => {
-            return (
-              <li className="flex gap-1">
-                <div className="flex bg-gray-100">
-                  <Image
-                    src={product.img}
-                    alt={product.name}
-                    width={105}
-                    height={105}
-                  />
-                </div>
-                <div className="w-full mr-8 ml-4 flex justify-between items-center">
-                  <div className="flex flex-col gap-2">
-                    <p className="text-gray-600 text-lg font-bold">
-                      {product.name}
-                    </p>
-                    <p className="text-green text-sm font-semibold">
-                      {formatPrice(product.price)}
-                    </p>
+          {cartList.length > 0 ? (
+            cartList.map((product) => {
+              return (
+                <li className="flex gap-1">
+                  <div className="flex bg-gray-100">
+                    <Image
+                      src={product.img}
+                      alt={product.name}
+                      width={105}
+                      height={105}
+                    />
                   </div>
-                  <FaTrash
-                    onClick={() => removeProduct(product.id)}
-                    className="cursor-pointer text-gray-400"
-                  />
-                </div>
-              </li>
-            );
-          })}
+                  <div className="w-full mr-8 ml-4 flex justify-between items-center">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-gray-600 text-lg font-bold">
+                        {product.name}
+                      </p>
+                      <p className="text-green text-sm font-semibold">
+                        {formatPrice(product.price)}
+                      </p>
+                    </div>
+                    <FaTrash
+                      onClick={() => removeProduct(product.id)}
+                      className="cursor-pointer text-gray-400"
+                    />
+                  </div>
+                </li>
+              );
+            })
+          ) : (
+            <div className="flex justify-center items-center h-44">
+              <p className="text-lg font-semibold text-gray-600">O seu carrinho está vazio!</p>
+            </div>
+          )}
         </ul>
 
         <div className="mx-4 flex justify-between pt-4 border-t-2 border-gray-100">
