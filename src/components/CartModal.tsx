@@ -14,6 +14,9 @@ const CartModal = ({ cartList, closeModal }: CartModalProps) => {
       currency: "BRL",
     }).format(price);
   };
+  const totalValue = cartList.reduce((acc, product) => {
+    return acc + product.price;
+  }, 0);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
@@ -35,8 +38,8 @@ const CartModal = ({ cartList, closeModal }: CartModalProps) => {
                   <Image
                     src={product.img}
                     alt={product.name}
-                    width={125}
-                    height={125}
+                    width={105}
+                    height={105}
                   />
                 </div>
                 <div className="w-full mr-8 ml-4 flex justify-between items-center">
@@ -57,7 +60,9 @@ const CartModal = ({ cartList, closeModal }: CartModalProps) => {
 
         <div className="mx-4 flex justify-between pt-4 border-t-2 border-gray-100">
           <p className="text-gray-600 font-medium text-sm">Total</p>
-          <p className="text-gray-300 text-sm font-bold">R$ 0,00</p>
+          <p className="text-gray-300 text-sm font-bold">
+            {formatPrice(totalValue)}
+          </p>
         </div>
         <div className="flex justify-center items-center mb-4">
           <button className="h-16 w-11/12 bg-gray-400 rounded-md text-gray text-sm font-semibold">
