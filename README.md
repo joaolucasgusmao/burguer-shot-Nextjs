@@ -15,3 +15,4 @@ O Burguer Shot é um aplicativo que simula um e-commerce de fast food, permitind
 - Next.js
 - TypeScript
 - Tailwind CSS
+- Framer Motion
