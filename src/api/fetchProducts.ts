@@ -1,6 +1,6 @@
 const fetchProducts = async () => {
   const response = await fetch(
-    "https://hamburgueria-kenzie-json-serve.herokuapp.com/products"
+    "https://products-api-k9wk.onrender.com/api/products"
   );
 
   if (!response.ok) {

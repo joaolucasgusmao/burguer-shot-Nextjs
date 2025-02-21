@@ -25,7 +25,7 @@ const ProductsList = ({ products, addToCart }: ProductsListProps) => {
             >
               <div className="w-full h-[9.375rem] bg-gray-100">
                 <Image
-                  src={product.img}
+                  src={product.image}
                   alt={product.name}
                   width={150}
                   height={300}

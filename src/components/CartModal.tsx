@@ -26,8 +26,12 @@ const CartModal = ({
   };
 
   const totalValue = cartList.reduce((acc, product) => {
-    return acc + product.price;
+    const price = Number(product.price);
+ 
+    return acc + price;
   }, 0);
+
+  console.log(formatPrice(totalValue));
 
   const removeProduct = (id: number) => {
     const newCartList = cartList.filter((product) => product.id !== id);
@@ -73,10 +77,10 @@ const CartModal = ({
               {cartList.length > 0 ? (
                 cartList.map((product) => {
                   return (
-                    <li className="flex gap-1">
+                    <li className="flex gap-1" key={product.id}>
                       <div className="flex bg-gray-100">
                         <Image
-                          src={product.img}
+                          src={product.image}
                           alt={product.name}
                           width={105}
                           height={105}
