@@ -31,8 +31,6 @@ const CartModal = ({
     return acc + price;
   }, 0);
 
-  console.log(formatPrice(totalValue));
-
   const removeProduct = (id: number) => {
     const newCartList = cartList.filter((product) => product.id !== id);
     setCartList(newCartList);
